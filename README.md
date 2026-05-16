@@ -1,16 +1,33 @@
 # Tradução em PT-BR dos jogos de Touhou Project para PC-98 — Crônicas de Gensokyo
 
-### Sobre o projeto
+## Sobre o projeto
 
-Este é um projeto de tradução em **Português do Brasil** dos jogos da série Touhou Project lançados para o NEC PC-98. Toda a tradução, revisão, implementação e organização foi realizada pelo grupo Crônicas de Gensokyo via Discord.
+Este é um projeto de tradução em **Português do Brasil** dos cinco primeiros jogos da série Touhou Project, lançados para o NEC PC-98. Toda a tradução, revisão, implementação e organização foi realizada pelo grupo **Crônicas de Gensokyo** via Discord.
 
-### Progresso
+### Links
+[Crônicas de Gensokyo][cronicas_discord]: Link de convite do nosso servidor no Discord.
+[Touhou Wiki Pt][touhouwiki_pt]: Website onde publicamos traduções dos materiais de Touhou Project. Enquanto o Touhou Patch Center não hospedar materiais de tradução dos jogos de PC-98, esta será a nossa plataforma principal para este projeto. 
+[Portal pt-br do Touhou Patch Center][tpc_portal_pt-br]: Website onde publicamos traduções dos materiais dos outros jogos de Touhou Project. É a nossa plataforma principal para hospedar nossos outros projetos de tradução.
+
+## Progresso
 
 1. Touhou 1 - Highly Responsive to Prayers - **Em andamento.**
 2. Touhou 2 - Story of Eastern Wonderland - Em espera para tradução/revisão/implementação.
 3. Touhou 3 - Phantasmagoria of Dim. Dream - Em espera para tradução/revisão/implementação.
 4. Touhou 4 - Lotus Land Story - Em espera para tradução/revisão/implementação.
 5. Touhou 5 - Mystic Square - Em espera para tradução/revisão/implementação.
+
+## Como funciona - Tradução das linhas de texto de código interno
+
+EM PROGRESSO.
+
+## Como funciona - Tradução dos outros materiais
+
+EM PROGRESSO.
+
+## Como funciona - Build
+
+EM PROGRESSO.
 
 ## Descrição original (em inglês) a seguir:
 
@@ -267,3 +284,9 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [`th04_marisa4_crash_warp`]: https://github.com/nmlgc/ReC98/tree/th04_marisa4_crash_warp
 [`th04_noems_crash_fix`]: https://github.com/nmlgc/ReC98/tree/th04_noems_crash_fix
 [`xJeePx`]: https://github.com/nmlgc/ReC98/tree/xJeePx
+
+---
+
+[cronicas_discord]: https://discord.gg/Kzzfy8mmgb
+[touhouwiki_pt]: https://pt.touhouwiki.net/wiki/Touhou_Wiki
+[tpc_portal_pt-br]: https://www.thpatch.net/wiki/Portal:Pt-br
