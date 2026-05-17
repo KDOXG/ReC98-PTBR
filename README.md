@@ -1,3 +1,42 @@
+# Tradução em PT-BR dos jogos de Touhou Project para PC-98 — Crônicas de Gensokyo
+
+## Sobre o projeto
+
+Este é um projeto de tradução em **Português do Brasil** dos cinco primeiros jogos da série Touhou Project, lançados para o NEC PC-98. Toda a tradução, revisão, implementação e organização foi realizada pelo grupo **Crônicas de Gensokyo** via Discord.
+
+### Links
+[Crônicas de Gensokyo][cronicas_discord]: Link de convite do nosso servidor no Discord.
+[Touhou Wiki Pt][touhouwiki_pt]: Website onde publicamos traduções dos materiais de Touhou Project. Enquanto o Touhou Patch Center não hospedar materiais de tradução dos jogos de PC-98, esta será a nossa plataforma principal para este projeto. 
+[Portal pt-br do Touhou Patch Center][tpc_portal_pt-br]: Website onde publicamos traduções dos materiais dos outros jogos de Touhou Project. É a nossa plataforma principal para hospedar nossos outros projetos de tradução.
+
+## Progresso
+
+1. Touhou 1 - Highly Responsive to Prayers - **Em andamento.**
+2. Touhou 2 - Story of Eastern Wonderland - Em espera para tradução/revisão/implementação.
+3. Touhou 3 - Phantasmagoria of Dim. Dream - Em espera para tradução/revisão/implementação.
+4. Touhou 4 - Lotus Land Story - Em espera para tradução/revisão/implementação.
+5. Touhou 5 - Mystic Square - Em espera para tradução/revisão/implementação.
+
+## Como funciona
+
+A proposta principal deste repositório é possibilitar a modificação das linhas de código do ReC98 e integrar a build do projeto com os arquivos do jogo para jogar os jogos com a tradução aplicada.
+
+A versão dos jogos usará como base a versão da branch [`anniversary`]. Mais informações estão disponíveis no README.md da branch.
+
+## Como funciona - Tradução do conteúdo no código interno do jogo
+
+EM PROGRESSO.
+
+## Como funciona - Tradução dos outros materiais
+
+EM PROGRESSO.
+
+## Como funciona - Build
+
+EM PROGRESSO.
+
+## Descrição original (em inglês) a seguir:
+
 # The Touhou PC-98 Restoration Project (*"ReC98"*)
 
 [![4-week crowdfunding goal…](https://rec98.nmlgc.net/badge/cap)](https://rec98.nmlgc.net)
@@ -252,3 +291,10 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [`th04_marisa4_crash_warp`]: https://github.com/nmlgc/ReC98/tree/th04_marisa4_crash_warp
 [`th04_noems_crash_fix`]: https://github.com/nmlgc/ReC98/tree/th04_noems_crash_fix
 [`xJeePx`]: https://github.com/nmlgc/ReC98/tree/xJeePx
+
+---
+
+[cronicas_discord]: https://discord.gg/Kzzfy8mmgb
+[touhouwiki_pt]: https://pt.touhouwiki.net/wiki/Touhou_Wiki
+[tpc_portal_pt-br]: https://www.thpatch.net/wiki/Portal:Pt-br
+[`anniversary`]: https://github.com/KDOXG/ReC98-PT-BR/tree/anniversary
