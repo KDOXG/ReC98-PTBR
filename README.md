@@ -17,17 +17,11 @@ Este é um projeto de tradução em **Português do Brasil** dos cinco primeiros
 4. Touhou 4 - Lotus Land Story - Em espera para tradução/revisão/implementação.
 5. Touhou 5 - Mystic Square - Em espera para tradução/revisão/implementação.
 
-## Como funciona - Tradução das linhas de texto de código interno
+## Como funciona
 
-EM PROGRESSO.
+A proposta principal deste repositório é possibilitar a modificação das linhas de código do ReC98 e integrar a build do projeto com os arquivos do jogo para jogar os jogos com a tradução aplicada.
 
-## Como funciona - Tradução dos outros materiais
-
-EM PROGRESSO.
-
-## Como funciona - Build
-
-EM PROGRESSO.
+A versão dos jogos usará como base a versão da branch [`anniversary`]. Mais informações estão disponíveis no README.md da branch.
 
 ## Descrição original (em inglês) a seguir:
 
@@ -290,3 +284,4 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [cronicas_discord]: https://discord.gg/Kzzfy8mmgb
 [touhouwiki_pt]: https://pt.touhouwiki.net/wiki/Touhou_Wiki
 [tpc_portal_pt-br]: https://www.thpatch.net/wiki/Portal:Pt-br
+[`anniversary`]: https://github.com/KDOXG/ReC98-PT-BR/tree/anniversary
