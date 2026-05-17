@@ -5,9 +5,9 @@
 Este é um projeto de tradução em **Português do Brasil** dos cinco primeiros jogos da série Touhou Project, lançados para o NEC PC-98. Toda a tradução, revisão, implementação e organização foi realizada pelo grupo **Crônicas de Gensokyo** via Discord.
 
 ### Links
-[Crônicas de Gensokyo][cronicas_discord]: Link de convite do nosso servidor no Discord.
-[Touhou Wiki Pt][touhouwiki_pt]: Website onde publicamos traduções dos materiais de Touhou Project. Enquanto o Touhou Patch Center não hospedar materiais de tradução dos jogos de PC-98, esta será a nossa plataforma principal para este projeto. 
-[Portal pt-br do Touhou Patch Center][tpc_portal_pt-br]: Website onde publicamos traduções dos materiais dos outros jogos de Touhou Project. É a nossa plataforma principal para hospedar nossos outros projetos de tradução.
+- [Crônicas de Gensokyo][cronicas_discord]: Link de convite do nosso servidor no Discord.
+- [Touhou Wiki Pt][touhouwiki_pt]: Website onde publicamos traduções dos materiais de Touhou Project. Enquanto o Touhou Patch Center não hospedar materiais de tradução dos jogos de PC-98, esta será a nossa plataforma principal para este projeto. 
+- [Portal pt-br do Touhou Patch Center][tpc_portal_pt-br]: Website onde publicamos traduções dos materiais dos outros jogos de Touhou Project. É a nossa plataforma principal para hospedar nossos outros projetos de tradução.
 
 ## Progresso
 
