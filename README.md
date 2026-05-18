@@ -28,9 +28,59 @@ A versão dos jogos usará como base a versão da branch [`anniversary`]. Mais i
 
 EM PROGRESSO.
 
-## Como funciona - Tradução dos outros materiais
+## Como funciona - Tradução dos materiais
 
-EM PROGRESSO.
+"Materiais" refere-se a todos os arquivos que acompanham o jogo, sejam eles reproduzidos durante a execução ou não. Por razões de direitos autorais, não podemos disponibilizar nenhum desses arquivos aqui neste repositório, sendo necessário adquiri-los por outras fontes para concluir a instalação do jogo com a tradução.
+
+Nossa intenção é publicar a tradução dos arquivos no Touhou Patch Center. Entretanto, no momento, o website não possui suporte para hospedar materiais dos jogos de PC-98. Enquanto o suporte não é implementado, estaremos publicando no Touhou Wiki Pt, seguindo o padrão e a organização de páginas do site.
+
+Além desses arquivos, também há **outros comentários do ZUN sobre as músicas**. Esses comentários a que me refiro foram distribuídos pelo seu website principal por download acompanhados de arquivos MIDI de arranjos das músicas, produzidos após o lançamento de cada jogo. Decidimos incluir esses comentários no nosso projeto devido a sua presença na página "Músicas" de cada jogo no Touhou Wiki. 
+
+### Materiais usados no jogo - Como acessar
+
+Os materiais usados no jogo são compostos pelos arquivos reproduzidos dentro do jogo. Estes arquivos são:
+
+- Comentários da Sala de Música (formato .txt)
+- Títulos de músicas (formato .std)
+- Títulos de estágios (formato .std)
+- Diálogos (formatos .txt, .mdn, .tx2)
+- Imagens com texto (formatos .grp, .pi)
+
+***Comentários da Sala de Música***: Tradução será publicada online no Touhou Wiki, na página "Músicas" referente a cada jogo. Quando o suporte aos jogos de PC-98 no Touhou Patch Center for implementado, também publicaremos nessa plataforma no formato para aplicação no jogo.
+
+***Títulos de músicas***: Tradução será publicada online no Touhou Wiki, na página "Músicas" referente a cada jogo. Quando o suporte aos jogos de PC-98 no Touhou Patch Center for implementado, também publicaremos nessa plataforma no formato para aplicação no jogo.
+
+***Títulos de estágios***: Tradução será publicada online no Touhou Wiki, na página "Tradução" referente a cada jogo, na subpágina "Cenário" referente a cada rota de jogo. Quando o suporte aos jogos de PC-98 no Touhou Patch Center for implementado, também publicaremos nessa plataforma no formato para aplicação no jogo.
+
+***Diálogos***: Tradução será publicada online no Touhou Wiki, na página "Tradução" referente a cada jogo, na subpágina "Cenário" referente a cada rota de jogo. Quando o suporte aos jogos de PC-98 no Touhou Patch Center for implementado, também publicaremos nessa plataforma no formato para aplicação no jogo. Conteúdos relacionados aos finais de cada jogo não serão publicados online no Touhou Wiki, apenas futuramente no Touhou Patch Center.
+
+***Imagens com texto***: Como as imagens incluem majoritariamente conteúdos dos finais do jogo, não buscaremos publicá-las online no Touhou Wiki, apenas futuramente no Touhou Patch Center quando o suporte aos jogos de PC-98 for implementado, já em formato para aplicação no jogo.
+
+### Materiais não usados no jogo
+
+Os materiais que não são usados no jogo são, basicamente, os arquivos de texto contidos dentro da pasta de instalação de cada jogo. Estes arquivos são:
+
+- 靈異1ST.TXT (Touhou 1)
+- 靈異伝.TXT (Touhou 1)
+- OMAKE.TXT (Touhou 2)
+- 封魔1ST.TXT (Touhou 2)
+- 封魔録.TXT (Touhou 2)
+- README.TXT (Touhou 3)
+- おまけ.TXT (Touhou 3)
+- 夢の人々.TXT (Touhou 3)
+- 夢時空.TXT (Touhou 3)
+- 夢時空1ST.TXT (Touhou 3)
+- MUSIC.TXT (Touhou 4)
+- OMAKE.TXT (Touhou 4)
+- README.TXT (Touhou 4)
+- 幻想郷.TXT (Touhou 4)
+- 幻想郷1ST.TXT (Touhou 4)
+- OMAKE.TXT (Touhou 5)
+- README.TXT (Touhou 5)
+- 怪綺談.TXT (Touhou 5)
+- 怪綺談1ST.TXT (Touhou 5)
+
+A tradução destes arquivos será publicada online no Touhou Wiki, na página "Tradução" referente a cada jogo.
 
 ## Como funciona - Build
 
