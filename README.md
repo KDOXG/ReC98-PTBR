@@ -35,8 +35,8 @@ A versão dos jogos usará como base a versão da branch [`anniversary`]. Mais i
 ### Strings de ambiente ou build
 
 Refere-se às linhas de texto associadas ao executável, sejam textos que aparecem no sistema operacional ou linhas necessárias para a build do código do jogo. Vai desde o nome do arquivo exportado até outras informações que aparecem associadas ao executável, fora da execução do jogo em si. A princípio, as strings que editaremos neste projeto são as que não possuem grandes limitações com relação a compatibilidade de caracteres ou fontes; todas as outras que possuem limitações serão ignoradas e não receberão tradução, podendo ser simplificadas ou puladas no processo de build.
-#TODO: Explicar sobre obj/fork.h
-#TODO: Apontar aonde essas strings estão definidas
+- #TODO: Explicar sobre obj/fork.h
+- #TODO: Apontar aonde essas strings estão definidas
 
 ### Strings de menus
 
