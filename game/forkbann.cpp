@@ -12,15 +12,5 @@ void pascal forkbanner_put(
 	screen_x_t x, screen_y_t y, uint16_t align, int16_t col_and_fx
 )
 {
-	if(align & FBA_BOTTOM) {
-		y -= (ROW_H * ROW_COUNT);
-	}
-	for(unsigned int i = 0; i < ROW_COUNT; i++) {
-		screen_x_t line_x = x;
-		if(align & FBA_RIGHT) {
-			line_x -= text_extent(STRS[i]);
-		}
-		graph_putsa_fx(line_x, y, (FX_8X8 | col_and_fx), STRS[i]);
-		y += ROW_H;
-	}
+	return;
 }
