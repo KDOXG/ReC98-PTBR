@@ -8,7 +8,7 @@ Este é um projeto de tradução para **Português do Brasil** dos cinco primeir
 
 - [Crônicas de Gensokyo][cronicas_discord]: Link de convite do nosso servidor no Discord.
 - [Touhou Wiki Pt][touhouwiki_pt]: Website onde publicamos traduções dos materiais de Touhou Project. Enquanto o Touhou Patch Center não hospedar materiais de tradução dos jogos de PC-98, esta será a nossa plataforma principal para este projeto. 
-- [Portal pt-br do Touhou Patch Center][tpc_portal_pt-br]: Website onde publicamos traduções dos materiais dos outros jogos de Touhou Project. É a nossa plataforma principal para hospedar nossos outros projetos de tradução.
+- [Portal pt-br do Touhou Patch Center][tpc_portal_pt-br]: Website onde publicamos traduções dos materiais dos outros jogos de Touhou Project. É a nossa plataforma principal para hospedar nossos outros projetos de tradução. No futuro, migraremos este projeto do Touhou Wiki Pt para o Touhou Patch Center assim que a compatibilidade com os jogos de PC-98 estiver concluída.
 
 ## Progresso
 
@@ -26,7 +26,33 @@ A versão dos jogos usará como base a versão da branch [`anniversary`]. Mais i
 
 ## Como funciona - Tradução do conteúdo no código interno do jogo
 
-EM PROGRESSO.
+"Conteúdo no código interno do jogo" refere-se aos textos contidos nos dados binários do executável, as chamadas "strings". Essas strings são editáveis a partir do código-fonte, espalhadas pelos arquivos `.c`, `.cpp`, `.h` etc., ao longo das pastas do projeto. Iremos dividir as strings em três categorias:
+
+- Strings de ambiente ou build
+- Strings de menus
+- Strings de gameplay
+
+### Strings de ambiente ou build
+
+Refere-se às linhas de texto associadas ao executável, sejam textos que aparecem no sistema operacional ou linhas necessárias para a build do código do jogo. Vai desde o nome do arquivo exportado até outras informações que aparecem associadas ao executável, fora da execução do jogo em si. A princípio, as strings que editaremos neste projeto são as que não possuem grandes limitações com relação a compatibilidade de caracteres ou fontes; todas as outras que possuem limitações serão ignoradas e não receberão tradução, podendo ser simplificadas ou puladas no processo de build.
+- #TODO: Explicar sobre obj/fork.h
+- #TODO: Apontar aonde essas strings estão definidas
+
+### Strings de menus
+
+Refere-se às linhas de texto a serem traduzidas que aparecem de forma fixa e específica na interface. Essas strings são renderizadas pela engine e por isso precisam ser tratadas levando em consideração as limitações e as configurações da fonte do PC-98; lembrando que modificações podem ser feitas com muita liberdade tanto no código do jogo quanto no arquivo bitmap da fonte para lidar com essas limitações e ajustar os textos adequadamente, da maneira que for melhor favorável para o projeto.
+
+Para essas strings, será necessário fazer um design que leva em conta o espaço reservado na tela.
+
+- #TODO: Apontar aonde essas strings estão definidas
+
+### Strings de gameplay
+
+Refere-se às linhas de texto a serem traduzidas que aparecem de forma dinâmica em animações na tela, sejam animações especiais usando elementos customizados ou textos renderizados por parte de resultados na gameplay, como por exemplo as telas de resultados e do final do jogo. Essas strings são renderizadas pela engine e por isso precisam ser tratadas levando em consideração as limitações e as configurações da fonte do PC-98; lembrando que modificações podem ser feitas com muita liberdade tanto no código do jogo quanto no arquivo bitmap da fonte para lidar com essas limitações e ajustar os textos adequadamente, da maneira que for melhor favorável para o projeto.
+
+Para essas strings, será necessário fazer um design que leva em conta o seu posicionamento na tela.
+
+- #TODO: Apontar aonde essas strings estão definidas
 
 ## Como funciona - Tradução dos materiais
 
@@ -36,7 +62,7 @@ Nossa intenção é publicar a tradução dos arquivos no Touhou Patch Center. E
 
 Além desses arquivos, também há **outros comentários do ZUN sobre as músicas**. Esses comentários a que me refiro foram distribuídos pelo seu website principal por download acompanhados de arquivos MIDI de arranjos das músicas, produzidos após o lançamento de cada jogo. Decidimos incluir esses comentários no nosso projeto devido a sua presença na página "Músicas" de cada jogo no Touhou Wiki. 
 
-### Materiais usados no jogo - Como acessar
+### Materiais usados no jogo
 
 Os materiais usados no jogo são compostos pelos arquivos reproduzidos dentro do jogo. Estes arquivos são:
 
@@ -84,7 +110,11 @@ A tradução destes arquivos será publicada online no Touhou Wiki, na página "
 
 ## Como funciona - Build
 
-EM PROGRESSO.
+A build é o processo que envolve preparar todos os arquivos do projeto para obter uma versão executável e distribuível do jogo traduzido com todos os materiais necessários. Todo o processo é feito rodando o script `ptbr_translation.py` via Python na pasta raiz do projeto, não será necessário abrir qualquer outro script manualmente para concluir a build.
+
+- #TODO: dar push nos arquivos restantes do projeto de forma organizada
+- #TODO: escrever o passo-a-passo de como preparar o projeto com os arquivos que precisam ser adicionados
+- #TODO: escrever o passo-a-passo de como navegar no script ptbr_translation.py e quais são todas as suas funções
 
 ## Descrição original (em inglês) a seguir:
 
