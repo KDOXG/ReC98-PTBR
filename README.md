@@ -43,14 +43,16 @@ Refere-se às linhas de texto associadas ao executável, sejam textos que aparec
 Refere-se às linhas de texto a serem traduzidas que aparecem de forma fixa e específica na interface. Essas strings são renderizadas pela engine e por isso precisam ser tratadas levando em consideração as limitações e as configurações da fonte do PC-98; lembrando que modificações podem ser feitas com muita liberdade tanto no código do jogo quanto no arquivo bitmap da fonte para lidar com essas limitações e ajustar os textos adequadamente, da maneira que for melhor favorável para o projeto.
 
 Para essas strings, será necessário fazer um design que leva em conta o espaço reservado na tela.
-#TODO: Apontar aonde essas strings estão definidas
+
+- #TODO: Apontar aonde essas strings estão definidas
 
 ### Strings de gameplay
 
 Refere-se às linhas de texto a serem traduzidas que aparecem de forma dinâmica em animações na tela, sejam animações especiais usando elementos customizados ou textos renderizados por parte de resultados na gameplay, como por exemplo as telas de resultados e do final do jogo. Essas strings são renderizadas pela engine e por isso precisam ser tratadas levando em consideração as limitações e as configurações da fonte do PC-98; lembrando que modificações podem ser feitas com muita liberdade tanto no código do jogo quanto no arquivo bitmap da fonte para lidar com essas limitações e ajustar os textos adequadamente, da maneira que for melhor favorável para o projeto.
 
 Para essas strings, será necessário fazer um design que leva em conta o seu posicionamento na tela.
-#TODO: Apontar aonde essas strings estão definidas
+
+- #TODO: Apontar aonde essas strings estão definidas
 
 ## Como funciona - Tradução dos materiais
 
@@ -109,9 +111,10 @@ A tradução destes arquivos será publicada online no Touhou Wiki, na página "
 ## Como funciona - Build
 
 A build é o processo que envolve preparar todos os arquivos do projeto para obter uma versão executável e distribuível do jogo traduzido com todos os materiais necessários. Todo o processo é feito rodando o script `ptbr_translation.py` via Python na pasta raiz do projeto, não será necessário abrir qualquer outro script manualmente para concluir a build.
-#TODO: dar push nos arquivos restantes do projeto de forma organizada
-#TODO: escrever o passo-a-passo de como preparar o projeto com os arquivos que precisam ser adicionados
-#TODO: escrever o passo-a-passo de como navegar no script ptbr_translation.py e quais são todas as suas funções
+
+- #TODO: dar push nos arquivos restantes do projeto de forma organizada
+- #TODO: escrever o passo-a-passo de como preparar o projeto com os arquivos que precisam ser adicionados
+- #TODO: escrever o passo-a-passo de como navegar no script ptbr_translation.py e quais são todas as suas funções
 
 ## Descrição original (em inglês) a seguir:
 
