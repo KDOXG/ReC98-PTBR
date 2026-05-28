@@ -116,6 +116,30 @@ A build é o processo que envolve preparar todos os arquivos do projeto para obt
 - #TODO: escrever o passo-a-passo de como preparar o projeto com os arquivos que precisam ser adicionados
 - #TODO: escrever o passo-a-passo de como navegar no script lang_pt-br.py e quais são todas as suas funções
 
+## Licenças
+
+Todas as licenças de ferramentas publicadas por terceiros sem associação com o ReC98 original que foram utilizadas para produção do projeto de tradução estão localizadas em `translation/LICENSES`.
+
+### Script python `lang_pt-br.py` e biblioteca de scripts Python localizada em `translation/lib`
+
+Todos os scripts Python introduzidos são de autoria de KDOXG, publicados neste repositório sob a licença MIT.
+
+### FREECG98.BMP
+
+O arquivo de imagem `FONT.BMP` foi originalmente distribuído por DOSBox-X com o nome `FREECG98.BMP` e editado por KDOXG para fins deste projeto.
+
+### bmp2pi
+
+Os binários `bmp2pi.exe` e `pi2bmp.exe` são originalmente distribuídos por MIYASAKA Masaru via seu website [ソースコード小屋][masaru_website].
+
+### NDC
+
+O binário `NDC.EXE` é originalmente distribuído por euee via seu website [あぶないツールのおへや][euee_website].
+
+### thdat
+
+O binário `thdat.exe` é originalmente distribuído por thpatch como parte do pacote de ferramentas [thtk][thtk].
+
 ## Descrição original (em inglês) a seguir:
 
 # The Touhou PC-98 Restoration Project (*"ReC98"*)
@@ -379,3 +403,6 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [touhouwiki_pt]: https://pt.touhouwiki.net/wiki/Touhou_Wiki
 [tpc_portal_pt-br]: https://www.thpatch.net/wiki/Portal:Pt-br
 [`anniversary`]: https://github.com/KDOXG/ReC98-PT-BR/tree/anniversary
+[euee_website]: https://euee.web.fc2.com/tool/nd.html
+[masaru_website]: https://cetus.sakura.ne.jp/softlab/srcpatch/index.html
+[thtk]: https://github.com/thpatch/thtk
