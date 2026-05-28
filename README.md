@@ -110,11 +110,11 @@ A tradução destes arquivos será publicada online no Touhou Wiki, na página "
 
 ## Como funciona - Build
 
-A build é o processo que envolve preparar todos os arquivos do projeto para obter uma versão executável e distribuível do jogo traduzido com todos os materiais necessários. Todo o processo é feito rodando o script `ptbr_translation.py` via Python na pasta raiz do projeto, não será necessário abrir qualquer outro script manualmente para concluir a build.
+A build é o processo que envolve preparar todos os arquivos do projeto para obter uma versão executável e distribuível do jogo traduzido com todos os materiais necessários. Todo o processo é feito rodando o script `lang_pt-br.py` via Python na pasta raiz do projeto, não será necessário abrir qualquer outro script manualmente para concluir a build.
 
 - #TODO: dar push nos arquivos restantes do projeto de forma organizada
 - #TODO: escrever o passo-a-passo de como preparar o projeto com os arquivos que precisam ser adicionados
-- #TODO: escrever o passo-a-passo de como navegar no script ptbr_translation.py e quais são todas as suas funções
+- #TODO: escrever o passo-a-passo de como navegar no script lang_pt-br.py e quais são todas as suas funções
 
 ## Descrição original (em inglês) a seguir:
 

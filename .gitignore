@@ -5,7 +5,28 @@ tup.config
 tup-generate.vardict
 !bin/README.md
 !bin/masters.lib
+!obj/fork.h
 
 # Converted sprites
 *.[ac]sp
 *.[AC]SP
+
+# Project-related
+.vscode
+
+# PT-BR
+translation/dosbox-x/*
+translation/exported_files
+translation/hdi/*
+translation/lib/__pycache__
+translation/mod/th01/*
+translation/mod/th02/*
+translation/mod/th03/*
+translation/mod/th04/*
+translation/mod/th05/*
+translation/running_game
+!translation/dosbox-x/dosbox-x.conf
+!translation/dosbox-x/FONT.BMP
+!translation/hdi/put_hdi_files_here.me
+!translation/mod/th01/apply_brightness.py
+!translation/mod/th01/revert_brightness.py
