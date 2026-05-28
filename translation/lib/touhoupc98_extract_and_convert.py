@@ -149,6 +149,10 @@ def convert_and_prepare_th05(file_name):
 def set_and_play_running_game(file_name):
     game_folder = os.path.normpath(os.path.join(export_dir, file_name + "_gamedata"))
     
+    if not os.path.exists(game_folder):
+        print(f"Error: Game folder {game_folder} not found. Please extract and convert the game first.")
+        return
+    
     # Reset running game directory to have the files of only one game
     if os.path.exists(running_game_dir):
         shutil.rmtree(running_game_dir)
