@@ -7,9 +7,12 @@ from . import pi_image_hex
 from . import bmp_pi_conversor
 from . import thdat
 
-export_dir = os.path.join("translation", "exported_files")
+dosbox_exe = "dosbox-x"
 dosbox_dir = os.path.join("translation", "dosbox-x")
+export_dir = os.path.join("translation", "exported_files")
+hdi_dir = os.path.join("translation", "hdi")
 mod_dir = os.path.join("translation", "mod")
+running_game_dir = os.path.join("translation", "running_game")
 
 # Convert all .grp files from grp_dir to .pi in pi_dir
 def convert_grp_to_pi(grp_dir, pi_dir):
@@ -22,9 +25,11 @@ def convert_grp_to_pi(grp_dir, pi_dir):
             pi_image_hex.clean_and_format(grp_file, 'PI', pi_file)
 
 # Convert all .pi files from pi_dir to .bmp in bmp_dir
-def convert_pi_to_bmp(pi_dir, bmp_dir):
+def convert_pi_to_bmp(pi_dir, bmp_dir, pi_list=None):
+    if pi_list is None:
+        pi_list = os.listdir(pi_dir)
     os.makedirs(bmp_dir, exist_ok=True)
-    for file in os.listdir(pi_dir):
+    for file in pi_list:
         if file.lower().endswith('.pi'):
             pi_file = os.path.join(pi_dir, file)
             bmp_filename = os.path.splitext(file)[0] + '.bmp'
@@ -32,9 +37,11 @@ def convert_pi_to_bmp(pi_dir, bmp_dir):
             bmp_pi_conversor.pi_to_bmp(pi_file, bmp_file)
 
 # Convert all .bmp files from bmp_dir to .pi in pi_dir
-def convert_bmp_to_pi(bmp_dir, pi_dir):
+def convert_bmp_to_pi(bmp_dir, pi_dir, bmp_list=None):
+    if bmp_list is None:
+        bmp_list = os.listdir(bmp_dir)
     os.makedirs(pi_dir, exist_ok=True)
-    for file in os.listdir(bmp_dir):
+    for file in bmp_list:
         if file.lower().endswith('.bmp'):
             bmp_file = os.path.join(bmp_dir, file)
             pi_filename = os.path.splitext(file)[0] + '.pi'
@@ -65,28 +72,45 @@ def extract_and_convert_th01(file_name, hdi_file):
     convert_grp_to_pi(gamedata_dir, pi_dir)
     
     convert_pi_to_bmp(pi_dir, bmp_dir)
+    
+    shutil.rmtree(pi_dir)
 
 def convert_and_prepare_th01(file_name):
     modded_dir = os.path.join(mod_dir, f"{file_name}")
     gamedata_dir = os.path.join(export_dir, f"{file_name}_gamedata")
-    bmp_dir = os.path.join(export_dir, f"{file_name}_bmp")
     pi_from_bmp_dir = os.path.join(export_dir, f"{file_name}_pi_from_bmp")
     grp_from_pi_dir = os.path.join(export_dir, f"{file_name}_grp_from_pi")
     
-    if not os.path.exists(bmp_dir):
-        print(f"BMP input directory {bmp_dir} not found.")
+    if not (os.path.exists(gamedata_dir) and os.path.exists(modded_dir)):
+        print(f"Directories for mod not found.")
         return
     
-    convert_bmp_to_pi(bmp_dir, pi_from_bmp_dir)
+    gamedata_files = os.listdir(gamedata_dir)
+    gamedata_files = [f.lower() for f in gamedata_files]
+    if "anniv.exe" not in gamedata_files:
+        gamedata_files.append("anniv.exe")
     
-    convert_bmp_to_pi(modded_dir, pi_from_bmp_dir)
+    modded_files = os.listdir(modded_dir)
+    modded_files = [f.lower() for f in modded_files]
+    
+    gamedata_files = [f for f in gamedata_files if f in modded_files or
+                      (f.endswith('.grp') and os.path.splitext(f)[0] + '.bmp' in modded_files)]
+    
+    bmp_files = [f for f in modded_files if f.endswith('.bmp') and
+                 (os.path.splitext(f)[0] + '.grp' in gamedata_files)]
+    
+    for f in [f for f in gamedata_files if not f.endswith('.grp')]:
+        src = os.path.join(modded_dir, f)
+        dst = os.path.join(gamedata_dir, f)
+        if os.path.isfile(src):
+            shutil.copy2(src, dst)
+    
+    convert_bmp_to_pi(modded_dir, pi_from_bmp_dir, bmp_files)
     
     convert_pi_to_grp(pi_from_bmp_dir, grp_from_pi_dir)
     
-    # Apply and clean the dat contents using thdat
     thdat.apply_and_clean_th01_archive(gamedata_dir)
     
-    # Clean and apply all converted files to the game folder
     for f in os.listdir(grp_from_pi_dir):
         src = os.path.join(grp_from_pi_dir, f)
         dst = os.path.join(gamedata_dir, f)
@@ -94,6 +118,7 @@ def convert_and_prepare_th01(file_name):
             if os.path.exists(dst):
                 os.remove(dst)
             os.rename(src, dst)
+    
     shutil.rmtree(pi_from_bmp_dir)
     shutil.rmtree(grp_from_pi_dir)
     
@@ -122,15 +147,12 @@ def convert_and_prepare_th05(file_name):
     print(f"Error: Extraction and conversion for Touhou 5 Kaikidan is not yet implemented.")
 
 def set_and_play_running_game(file_name):
-    running_game_dir = "running_game"
-    dosbox_dir = "dosbox-x"
-    dosbox_exe = os.path.join(dosbox_dir, "dosbox-x.exe" if os.name == 'nt' else "dosbox-x")
-    game_folder = os.path.join("exported_files", file_name + "_gamedata")
+    game_folder = os.path.normpath(os.path.join(export_dir, file_name + "_gamedata"))
     
+    # Reset running game directory to have the files of only one game
     if os.path.exists(running_game_dir):
         shutil.rmtree(running_game_dir)
     os.makedirs(running_game_dir, exist_ok=True)
-    
     if os.path.exists(game_folder):
         for item in os.listdir(game_folder):
             src_path = os.path.join(game_folder, item)
@@ -138,14 +160,13 @@ def set_and_play_running_game(file_name):
             if os.path.isfile(src_path):
                 shutil.copy2(src_path, dst_path)
 
-    if os.path.exists(dosbox_exe):
-        try:
-            subprocess.Popen([dosbox_exe], cwd=dosbox_dir)
-        except Exception as e:
-            print(f"Failed to launch dosbox-x: {e}")
+    try:
+        subprocess.run(dosbox_exe, cwd=dosbox_dir, shell=True)
+    except Exception as e:
+        print(f"Failed to launch dosbox-x: {e}")
 
 def extract_and_convert_game_to_mod(file_name = ""):
-    hdi_file = "hdi/" + file_name + ".hdi"
+    hdi_file = os.path.join(hdi_dir, file_name + ".hdi")
     
     if not os.path.exists(hdi_file):
         print(f"Error: {hdi_file} not found.")
@@ -166,11 +187,11 @@ def extract_and_convert_game_to_mod(file_name = ""):
             print(f"Error: Unsupported file name {file_name}. No extraction or conversion performed.")
 
 def convert_mod_to_game(file_name = ""):
-    hdi_file = "hdi/" + file_name + ".hdi"
+    hdi_file = os.path.join(hdi_dir, file_name + ".hdi")
     
     if not os.path.exists(hdi_file):
         print(f"Error: {hdi_file} not found.")
-        sys.exit(1)
+        return
     
     match file_name:
         case "th01":

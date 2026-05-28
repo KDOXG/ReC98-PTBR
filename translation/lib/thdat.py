@@ -11,13 +11,11 @@ def extract_th01_archive(gamedata_dir):
     tmp_file = "th01_tmp.dat"
     tmp_folder = "extract_tmp"
     
-    root_dir = "translation"
-    
     # Construct full paths
-    archive_path = os.path.normpath(os.path.join(root_dir, gamedata_dir, jp_file))
-    temp_archive_path = os.path.normpath(os.path.join(root_dir, gamedata_dir, tmp_file))
-    temp_extract_path = os.path.normpath(os.path.join(root_dir, gamedata_dir, tmp_folder))
-    final_extract_path = os.path.normpath(os.path.join(root_dir, gamedata_dir, jp_folder))
+    archive_path = os.path.normpath(os.path.join(gamedata_dir, jp_file))
+    temp_archive_path = os.path.normpath(os.path.join(gamedata_dir, tmp_file))
+    temp_extract_path = os.path.normpath(os.path.join(gamedata_dir, tmp_folder))
+    final_extract_path = os.path.normpath(os.path.join(gamedata_dir, jp_folder))
     
     executable = thdat
 
@@ -64,13 +62,11 @@ def apply_and_clean_th01_archive(gamedata_dir):
     tmp_file = "th01_tmp.dat"
     tmp_folder = "extract_tmp"
     
-    root_dir = "translation"
-    
     # Construct full paths
-    archive_path = os.path.normpath(os.path.join(root_dir, gamedata_dir, jp_file))
-    temp_archive_path = os.path.normpath(os.path.join(root_dir, gamedata_dir, tmp_file))
-    temp_extract_path = os.path.normpath(os.path.join(root_dir, gamedata_dir, tmp_folder))
-    final_extract_path = os.path.normpath(os.path.join(root_dir, gamedata_dir, jp_folder))
+    archive_path = os.path.normpath(os.path.join(gamedata_dir, jp_file))
+    temp_archive_path = os.path.normpath(os.path.join(gamedata_dir, tmp_file))
+    temp_extract_path = os.path.normpath(os.path.join(gamedata_dir, tmp_folder))
+    final_extract_path = os.path.normpath(os.path.join(gamedata_dir, jp_folder))
     
     executable = thdat
 
