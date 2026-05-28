@@ -147,10 +147,11 @@ def convert_and_prepare_th05(file_name):
     print(f"Error: Extraction and conversion for Touhou 5 Kaikidan is not yet implemented.")
 
 def set_and_play_running_game(file_name):
-    game_folder = os.path.normpath(os.path.join(export_dir, file_name + "_gamedata"))
+    game_folder_name = file_name + "_gamedata"
+    game_folder = os.path.normpath(os.path.join(export_dir, game_folder_name))
     
     if not os.path.exists(game_folder):
-        print(f"Error: Game folder {file_name + "_gamedata"} not found. Please extract and convert the game first.")
+        print(f"Error: Game folder {game_folder_name} not found. Please extract and convert the game first.")
         return
     
     # Reset running game directory to have the files of only one game

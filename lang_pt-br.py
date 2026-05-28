@@ -55,7 +55,7 @@ def print_touhou_menu(game_name):
     print(f"     TOUHOU PC98 TRANSLATION MOD - {game_name}")
     print("=" * 60)
     print("1. Test Game from Game Folder")
-    print("2. Full Extract and Convert to Mod")
+    print("2. Full Extract and Convert for Modding")
     print("3. Convert Mod to Game Format and Apply to Game Folder")
     print("0. Go Back to Main Menu")
     print("=" * 60)
