@@ -2,22 +2,11 @@ import os
 import subprocess
 import sys
 
-class ConversionLib:
+class PiConversionLib:
     """Library wrapper for BMP/PI conversion using external executables."""
     
     def __init__(self, bmp2pi_exe=None, pi2bmp_exe=None):
-        """
-        Initialize the conversion library with paths to conversion executables.
-        
-        Args:
-            bmp2pi_exe: Path to bmp2pi.exe. If None, looks in the script's directory.
-            pi2bmp_exe: Path to pi2bmp.exe. If None, looks in the script's directory.
-        
-        Raises:
-            FileNotFoundError: If executable paths cannot be found or don't exist.
-        """
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        
         self.bmp2pi_path = bmp2pi_exe or os.path.join(base_dir, 'bmp2pi.exe')
         self.pi2bmp_path = pi2bmp_exe or os.path.join(base_dir, 'pi2bmp.exe')
         
@@ -80,7 +69,7 @@ class ConversionLib:
 
 # Global instance for convenience
 try:
-    lib = ConversionLib()
+    lib = PiConversionLib()
 except FileNotFoundError as e:
     print(f"Warning: {e}")
     lib = None
@@ -98,25 +87,3 @@ def pi_to_bmp(pi_file, bmp_file):
         print("Error: Conversion library not initialized")
         return 1
     return lib.pi_to_bmp(pi_file, bmp_file)
-
-if __name__ == "__main__":
-    # Test mode
-    bmp_input = "test.bmp"
-    pi_output = "teste.pi"
-    bmp_output = "test_out.bmp"
-
-    if lib is None:
-        print("Error: Conversion library initialization failed. Ensure bmp2pi.exe and pi2bmp.exe are in the same directory.")
-        sys.exit(1)
-
-    if os.path.exists(bmp_input):
-        print(f"Converting {bmp_input} to {pi_output}")
-        result = lib.bmp_to_pi(bmp_input, pi_output)
-        print(f"BMP to PI conversion: {'Success' if result == 0 else 'Failed'}")
-
-        if result == 0 and os.path.exists(pi_output):
-            print(f"Converting {pi_output} to {bmp_output}")
-            result2 = lib.pi_to_bmp(pi_output, bmp_output)
-            print(f"PI to BMP conversion: {'Success' if result2 == 0 else 'Failed'}")
-    else:
-        print(f"Test file {bmp_input} not found. Please provide a BMP file for testing.")

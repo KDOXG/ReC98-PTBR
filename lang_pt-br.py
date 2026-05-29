@@ -2,6 +2,8 @@ import os
 import sys
 from translation.lib.touhoupc98_extract_and_convert import convert_mod_to_game, extract_and_convert_game_to_mod, set_and_play_running_game
 
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 # ====================== CROSS-PLATFORM KEY DETECTION ======================
 if os.name == 'nt':  # Windows
     import msvcrt

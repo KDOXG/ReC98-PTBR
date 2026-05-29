@@ -1,8 +1,7 @@
 import os
 import subprocess
 
-base_dir = os.path.dirname(os.path.abspath(__file__))
-ndc = os.path.join(base_dir, 'NDC.EXE')
+ndc = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'NDC.EXE')
 
 # NDC Partition number for floppy/HDI images
 PARTITION_NUMBER = "0"

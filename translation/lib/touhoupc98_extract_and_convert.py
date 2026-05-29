@@ -1,18 +1,25 @@
 import os
 import shutil
-import sys
 import subprocess
 from . import hdi_tool
 from . import pi_image_hex
 from . import bmp_pi_conversor
 from . import thdat
 
+lib_dir = os.path.dirname(os.path.abspath(__file__))
+translation_dir = os.path.dirname(lib_dir)
+root_dir = os.path.dirname(translation_dir)
+
 dosbox_exe = "dosbox-x"
-dosbox_dir = os.path.join("translation", "dosbox-x")
-export_dir = os.path.join("translation", "exported_files")
-hdi_dir = os.path.join("translation", "hdi")
-mod_dir = os.path.join("translation", "mod")
-running_game_dir = os.path.join("translation", "running_game")
+dosbox_dir = os.path.join(translation_dir, "dosbox-x")
+export_dir = os.path.join(translation_dir, "exported_files")
+hdi_dir = os.path.join(translation_dir, "hdi")
+mod_dir = os.path.join(translation_dir, "mod")
+running_game_dir = os.path.join(translation_dir, "running_game")
+
+# ================================================================
+# CONVERSORS - PRIVATE FUNCTIONS
+# ================================================================
 
 # Convert all .grp files from grp_dir to .pi in pi_dir
 def convert_grp_to_pi(grp_dir, pi_dir):
@@ -57,6 +64,10 @@ def convert_pi_to_grp(pi_dir, grp_dir):
             grp_filename = os.path.splitext(file)[0] + '.grp'
             grp_file = os.path.join(grp_dir, grp_filename)
             pi_image_hex.clean_and_format(pi_file, 'GRP', grp_file)
+
+# ================================================================
+# EXTRACTION AND CONVERSION - PRIVATE FUNCTIONS
+# ================================================================
 
 def extract_and_convert_th01(file_name, hdi_file):
     gamedata_dir = os.path.join(export_dir, f"{file_name}_gamedata")
@@ -146,6 +157,10 @@ def extract_and_convert_th05(file_name, hdi_file):
 def convert_and_prepare_th05(file_name):
     print(f"Error: Extraction and conversion for Touhou 5 Kaikidan is not yet implemented.")
 
+# ================================================================
+# SET AND PLAY - PUBLIC FUNCTION
+# ================================================================
+
 def set_and_play_running_game(file_name):
     game_folder_name = file_name + "_gamedata"
     game_folder = os.path.normpath(os.path.join(export_dir, game_folder_name))
@@ -169,6 +184,10 @@ def set_and_play_running_game(file_name):
         subprocess.run(dosbox_exe, cwd=dosbox_dir, shell=True)
     except Exception as e:
         print(f"Failed to launch dosbox-x: {e}")
+
+# ================================================================
+# EXTRACTION AND CONVERSION - PUBLIC FUNCTIONS
+# ================================================================
 
 def extract_and_convert_game_to_mod(file_name = ""):
     hdi_file = os.path.join(hdi_dir, file_name + ".hdi")
