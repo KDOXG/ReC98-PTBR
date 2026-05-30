@@ -1,0 +1,5 @@
+#define ROUTE_SEL_1 "ＲＯＵＮＤ　１　ＣＬＥＡＲ"
+#define ROUTE_SEL_2 "Ｃｏｎｇｒａｔｕｌａｔｉｏｎ！！"
+#define ROUTE_SEL_3 "Ｓｅｌｅｃｔ　ｎｅｘｔ　Ｒｏｕｎｄ"
+#define ROUTE_SEL_4 "魔界へ"
+#define ROUTE_SEL_5 "地獄へ"
