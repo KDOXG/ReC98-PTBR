@@ -119,7 +119,7 @@ A build é o processo que envolve preparar todos os arquivos do projeto para obt
 
 Todas as licenças de ferramentas publicadas por terceiros sem associação com o ReC98 original que foram utilizadas para produção do projeto de tradução estão localizadas em `translation/LICENSES`.
 
-### Script python `lang_pt-br.py` e biblioteca de scripts Python localizada em `translation/lib`
+### Script Python `lang_pt-br.py` e biblioteca de scripts Python localizada em `translation/lib`
 
 Todos os scripts Python introduzidos são de autoria de KDOXG, publicados neste repositório sob a licença MIT.
 
