@@ -1,6 +1,6 @@
 import os
 import sys
-from translation.lib.touhoupc98_extract_and_convert import convert_mod_to_game, extract_and_convert_game_to_mod, set_and_play_running_game
+from translation.lib.touhoupc98_extract_and_convert import extract_and_convert_game_to_mod, set_and_play_modded_game, convert_modded_game_to_hdi
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -56,9 +56,9 @@ def print_touhou_menu(game_name):
     print("=" * 60)
     print(f"     TOUHOU PC98 TRANSLATION MOD - {game_name}")
     print("=" * 60)
-    print("1. Test Game from Game Folder")
-    print("2. Full Extract and Convert for Modding")
-    print("3. Convert Mod to Game Format and Apply to Game Folder")
+    print("1. Full Extract from HDI and Convert for Modding")
+    print("2. Test Game from Mod + Game Folder")
+    print("3. Generate HDI with Mod + Game Folder")
     print("0. Go Back to Main Menu")
     print("=" * 60)
     print("\nPress the number key (no Enter needed)...")
@@ -125,19 +125,19 @@ def game_menu(game_name, file_name):
                 return
             case b'1':
                 clear_screen()
-                print(f"Testing {game_name} from the Game Folder...")
-                set_and_play_running_game(file_name)
-                input("\nPress Enter to continue...")
-            case b'2':
-                clear_screen()
                 print(f"Starting Full Extract and Convert for {game_name}...")
                 extract_and_convert_game_to_mod(file_name)
                 print(f"Finished process.")
                 input("\nPress Enter to continue...")
+            case b'2':
+                clear_screen()
+                print(f"Testing {game_name} with Mod from the Game Folder...")
+                set_and_play_modded_game(file_name)
+                input("\nPress Enter to continue...")
             case b'3':
                 clear_screen()
-                print(f"Converting Mod → Game Format for {game_name}...")
-                convert_mod_to_game(file_name)
+                print(f"Generating HDI with Mod + Game for {game_name}...")
+                convert_modded_game_to_hdi(file_name)
                 print(f"Finished process.")
                 input("\nPress Enter to continue...")
 

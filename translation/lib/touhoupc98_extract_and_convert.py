@@ -74,100 +74,118 @@ def extract_and_convert_th01(file_name, hdi_file):
     pi_dir = os.path.join(export_dir, f"{file_name}_pi")
     bmp_dir = os.path.join(export_dir, f"{file_name}_bmp")
     
-    # Extract all files from hdi
+    # Extract all files from .hdi
     hdi_tool.extract_all_files_from_hdi(hdi_file, gamedata_dir)
     
-    # Extract the dat contents using thdat
+    # Extract .dat contents using thdat
     thdat.extract_th01_archive(gamedata_dir)
     
     convert_grp_to_pi(gamedata_dir, pi_dir)
-    
     convert_pi_to_bmp(pi_dir, bmp_dir)
     
     shutil.rmtree(pi_dir)
 
 def convert_and_prepare_th01(file_name):
-    modded_dir = os.path.join(mod_dir, f"{file_name}")
+    mod_root_dir = os.path.join(mod_dir, f"{file_name}")
     gamedata_dir = os.path.join(export_dir, f"{file_name}_gamedata")
+    modded_dir = os.path.join(export_dir, f"{file_name}_modded")
     pi_from_bmp_dir = os.path.join(export_dir, f"{file_name}_pi_from_bmp")
     grp_from_pi_dir = os.path.join(export_dir, f"{file_name}_grp_from_pi")
     
-    if not (os.path.exists(gamedata_dir) and os.path.exists(modded_dir)):
-        print(f"Directories for mod not found.")
-        return
+    if not (os.path.exists(gamedata_dir) and os.path.exists(mod_root_dir)):
+        print(f"Error: Directories for mod not found.")
+        return 1
     
-    gamedata_files = os.listdir(gamedata_dir)
-    gamedata_files = [f.lower() for f in gamedata_files]
-    if "anniv.exe" not in gamedata_files:
-        gamedata_files.append("anniv.exe")
+    # Build and convert modded .dat file
+    thdat.apply_and_clean_th01_archive(gamedata_dir,mod_root_dir)
     
-    modded_files = os.listdir(modded_dir)
-    modded_files = [f.lower() for f in modded_files]
+    # Create output modded folder
+    os.makedirs(modded_dir, exist_ok=True)
     
-    gamedata_files = [f for f in gamedata_files if f in modded_files or
-                      (f.endswith('.grp') and os.path.splitext(f)[0] + '.bmp' in modded_files)]
-    
-    bmp_files = [f for f in modded_files if f.endswith('.bmp') and
-                 (os.path.splitext(f)[0] + '.grp' in gamedata_files)]
-    
-    for f in [f for f in gamedata_files if not f.endswith('.grp')]:
-        src = os.path.join(modded_dir, f)
-        dst = os.path.join(gamedata_dir, f)
+    # Copy all original files to modded folder
+    for item in os.listdir(gamedata_dir):
+        src = os.path.join(gamedata_dir, item)
+        dst = os.path.join(modded_dir, item)
         if os.path.isfile(src):
             shutil.copy2(src, dst)
     
-    convert_bmp_to_pi(modded_dir, pi_from_bmp_dir, bmp_files)
+    # Get list of all original files and mod files, for checking which ones are valid mods in mod folder
+    modded_files = os.listdir(mod_root_dir)
+    modded_files = [f.lower() for f in modded_files]
+    gamedata_files = os.listdir(gamedata_dir)
+    gamedata_files = [f.lower() for f in gamedata_files] + ["anniv.exe"]
+    gamedata_files = [f for f in gamedata_files if f in modded_files or
+                      (f.endswith('.grp') and os.path.splitext(f)[0] + '.bmp' in modded_files)]
     
+    # Copy all miscellaneous mods to modded folder
+    for item in os.listdir(mod_root_dir):
+        if item.lower() not in gamedata_files:
+            continue
+        src = os.path.join(mod_root_dir, item)
+        dst = os.path.join(modded_dir, item)
+        if os.path.isfile(src):
+            shutil.copy2(src, dst)
+    
+    # Get list of all modded .bmp files that are valid mods (have a corresponding .grp in original files list)
+    bmp_files = [f for f in modded_files if f.endswith('.bmp') and
+                 (os.path.splitext(f)[0] + '.grp' in gamedata_files)]
+    
+    # Convert and copy modded .grp files that are valid mods to modded folder
+    convert_bmp_to_pi(mod_root_dir, pi_from_bmp_dir, bmp_files)
     convert_pi_to_grp(pi_from_bmp_dir, grp_from_pi_dir)
-    
-    thdat.apply_and_clean_th01_archive(gamedata_dir)
-    
     for f in os.listdir(grp_from_pi_dir):
         src = os.path.join(grp_from_pi_dir, f)
-        dst = os.path.join(gamedata_dir, f)
+        dst = os.path.join(modded_dir, f)
         if os.path.isfile(src):
             if os.path.exists(dst):
                 os.remove(dst)
             os.rename(src, dst)
     
+    # Clean temp folders
     shutil.rmtree(pi_from_bmp_dir)
     shutil.rmtree(grp_from_pi_dir)
+    
+    return 0
     
 def extract_and_convert_th02(file_name, hdi_file):
     print(f"Error: Extraction and conversion for Touhou 2 Fuumaroku is not yet implemented.")
 
 def convert_and_prepare_th02(file_name):
     print(f"Error: Extraction and conversion for Touhou 2 Fuumaroku is not yet implemented.")
+    return 1
     
 def extract_and_convert_th03(file_name, hdi_file):
     print(f"Error: Extraction and conversion for Touhou 3 Yumejikuu is not yet implemented.")
 
 def convert_and_prepare_th03(file_name):
     print(f"Error: Extraction and conversion for Touhou 3 Yumejikuu is not yet implemented.")
+    return 1
     
 def extract_and_convert_th04(file_name, hdi_file):
     print(f"Error: Extraction and conversion for Touhou 4 Gensoukyou is not yet implemented.")
 
 def convert_and_prepare_th04(file_name):
     print(f"Error: Extraction and conversion for Touhou 4 Gensoukyou is not yet implemented.")
+    return 1
     
 def extract_and_convert_th05(file_name, hdi_file):
     print(f"Error: Extraction and conversion for Touhou 5 Kaikidan is not yet implemented.")
 
 def convert_and_prepare_th05(file_name):
     print(f"Error: Extraction and conversion for Touhou 5 Kaikidan is not yet implemented.")
+    return 1
 
 # ================================================================
-# SET AND PLAY - PUBLIC FUNCTION
+# SET AND PLAY - PRIVATE FUNCTION
 # ================================================================
 
 def set_and_play_running_game(file_name):
-    game_folder_name = file_name + "_gamedata"
+    game_folder_name = file_name + "_modded"
     game_folder = os.path.normpath(os.path.join(export_dir, game_folder_name))
     
-    if not os.path.exists(game_folder):
-        print(f"Error: Game folder {game_folder_name} not found. Please extract and convert the game first.")
-        return
+    # if not os.path.exists(game_folder):
+    #     print(f"Error: Game folder {game_folder_name} not found. Please extract and convert the game first.")
+    #     return
     
     # Reset running game directory to have the files of only one game
     if os.path.exists(running_game_dir):
@@ -210,7 +228,7 @@ def extract_and_convert_game_to_mod(file_name = ""):
         case _:
             print(f"Error: Unsupported file name {file_name}. No extraction or conversion performed.")
 
-def convert_mod_to_game(file_name = ""):
+def set_and_play_modded_game(file_name = ""):
     hdi_file = os.path.join(hdi_dir, file_name + ".hdi")
     
     if not os.path.exists(hdi_file):
@@ -219,14 +237,22 @@ def convert_mod_to_game(file_name = ""):
     
     match file_name:
         case "th01":
-            convert_and_prepare_th01(file_name)
+            error = convert_and_prepare_th01(file_name)
         case "th02":
-            convert_and_prepare_th02(file_name)
+            error = convert_and_prepare_th02(file_name)
         case "th03":
-            convert_and_prepare_th03(file_name)
+            error = convert_and_prepare_th03(file_name)
         case "th04":
-            convert_and_prepare_th04(file_name)
+            error = convert_and_prepare_th04(file_name)
         case "th05":
-            convert_and_prepare_th05(file_name)
+            error = convert_and_prepare_th05(file_name)
         case _:
             print(f"Error: Unsupported file name {file_name}. No extraction or conversion performed.")
+            return
+    if error:
+        print(f"Error: Failed to prepare modded game. Please check the mod files and try again.")
+        return
+    set_and_play_running_game(file_name)
+
+def convert_modded_game_to_hdi(file_name = ""):
+    print(f"Error: Conversion from Mod + Game to HDI is not yet implemented.")
