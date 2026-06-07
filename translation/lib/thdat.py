@@ -43,7 +43,6 @@ CONFIGS = {
     },
 }
 
-
 def run_extract(gamedata_dir, config):
     executable = thdat
 
@@ -61,87 +60,144 @@ def run_extract(gamedata_dir, config):
         tmp_file = tmp_files[i]
         tmp_folder = tmp_folders[i]
 
-        archive_path = os.path.normpath(os.path.join(gamedata_dir, jp_file))
-        temp_archive_path = os.path.normpath(os.path.join(gamedata_dir, tmp_file))
-        temp_extract_path = os.path.normpath(os.path.join(gamedata_dir, tmp_folder))
-        final_extract_path = os.path.normpath(os.path.join(gamedata_dir, jp_folder))
+        archive_file_path = os.path.normpath(os.path.join(gamedata_dir, jp_file))
+        temp_archive_file_path = os.path.normpath(os.path.join(gamedata_dir, tmp_file))
+        temp_extract_folder_path = os.path.normpath(os.path.join(gamedata_dir, tmp_folder))
+        final_extract_folder_path = os.path.normpath(os.path.join(gamedata_dir, jp_folder))
 
         # 1. Rename archive to ASCII
-        if os.path.exists(archive_path):
-            os.rename(archive_path, temp_archive_path)
-            os.makedirs(temp_extract_path, exist_ok=True)
+        if os.path.exists(archive_file_path):
+            os.rename(archive_file_path, temp_archive_file_path)
+            os.makedirs(temp_extract_folder_path, exist_ok=True)
         else:
-            print(f"Error: Could not find {archive_path}")
+            print(f"Error: Could not find {archive_file_path}")
             continue
 
         try:
             # 2. Execute thdat
             cmd = [
                 executable,
-                "-C", temp_extract_path,
+                "-C", temp_extract_folder_path,
                 "-x", version,
-                temp_archive_path,
+                temp_archive_file_path,
             ]
-            print(f"Running thdat for {jp_file} (version {version})...")
+            print(f"Running thdat extract for {jp_file} (version {version})...")
             result = subprocess.run(cmd, capture_output=True, text=True)
 
             if result.returncode != 0:
                 print(f"thdat Error: {result.stderr}")
 
         finally:
-            # 3. Cleanup: Restore Japanese names regardless of success or failure
-            if os.path.exists(temp_archive_path):
-                os.rename(temp_archive_path, archive_path)
+            # 3. Cleanup and restore Japanese names
+            if os.path.exists(temp_archive_file_path):
+                os.rename(temp_archive_file_path, archive_file_path)
 
-            if os.path.exists(temp_extract_path):
-                if os.path.exists(final_extract_path):
-                    shutil.rmtree(final_extract_path)
-                os.rename(temp_extract_path, final_extract_path)
-                print("Extraction complete and names restored.")
+            if os.path.exists(temp_extract_folder_path):
+                if os.path.exists(final_extract_folder_path):
+                    shutil.rmtree(final_extract_folder_path)
+                os.rename(temp_extract_folder_path, final_extract_folder_path)
+                print(f"{jp_file} extraction complete and names restored.")
 
-def run_archive(gamedata_dir, mod_dir, config):
-    print("Warning: Archiving with thdat is not implemented yet.")
+def run_create(gamedata_dir, mod_dir, config):
+    executable = thdat
+
+    jp_files = config.get("jp_files", [])
+    jp_folders = config.get("jp_folders", [])
+    tmp_files = config.get("tmp_files", [])
+    tmp_folders = config.get("tmp_folders", [])
+    version = config.get("version", "d")
+
+    # Normalize lists to same length
+    count = min(len(jp_files), len(jp_folders), len(tmp_files), len(tmp_folders))
+    for i in range(count):
+        jp_file = jp_files[i]
+        jp_folder = jp_folders[i]
+        tmp_file = tmp_files[i]
+        tmp_folder = tmp_folders[i]
+
+        gamedata_folder_path = os.path.normpath(os.path.join(gamedata_dir, jp_folder))
+        mod_folder_path = os.path.normpath(os.path.join(mod_dir, jp_folder))
+        temp_create_folder_path = os.path.normpath(os.path.join(mod_dir, tmp_folder))
+        temp_archive_file_path = os.path.normpath(os.path.join(mod_dir, tmp_file))
+        final_create_file_path = os.path.normpath(os.path.join(mod_dir, jp_file))
+        
+        if os.path.exists(final_create_file_path):
+            os.remove(final_create_file_path)
+        
+        os.makedirs(temp_create_folder_path, exist_ok=True)
+        
+        for f in os.listdir(gamedata_folder_path):
+            src = os.path.join(gamedata_folder_path, f)
+            dst = os.path.join(temp_create_folder_path, f)
+            if os.path.isfile(src):
+                shutil.copy2(src, dst)
+        
+        for f in os.listdir(mod_folder_path):
+            src = os.path.join(mod_folder_path, f)
+            dst = os.path.join(temp_create_folder_path, f)
+            if os.path.isfile(src):
+                shutil.copy2(src, dst)
+
+        try:
+            # Execute thdat
+            cmd = [
+                executable,
+                "-c", version,
+                temp_archive_file_path,
+                temp_create_folder_path,
+            ]
+            print(f"Running thdat create for {jp_file} (version {version})...")
+            result = subprocess.run(cmd, capture_output=True, text=True)
+
+            if result.returncode != 0:
+                print(f"thdat Error: {result.stderr}")
+
+        finally:
+            # Cleanup and restore Japanese names
+            if os.path.exists(temp_archive_file_path):
+                os.rename(temp_archive_file_path, final_create_file_path)
+            shutil.rmtree(temp_create_folder_path)
+            print(f"{jp_file} creation complete and names restored.")
 
 def extract_th01_archive(gamedata_dir):
     config = CONFIGS.get("th01")
     run_extract(gamedata_dir, config)
 
-def apply_and_clean_th01_archive(gamedata_dir, mod_dir):
+def create_th01_archive(gamedata_dir, mod_dir):
     config = CONFIGS.get("th01")
-    run_archive(gamedata_dir, mod_dir, config)
+    run_create(gamedata_dir, mod_dir, config)
 
 def extract_th02_archive(gamedata_dir):
     config = CONFIGS.get("th02")
     run_extract(gamedata_dir, config)
 
-def apply_and_clean_th02_archive(gamedata_dir, mod_dir):
+def create_th02_archive(gamedata_dir, mod_dir):
     config = CONFIGS.get("th02")
-    run_archive(gamedata_dir, mod_dir, config)
+    run_create(gamedata_dir, mod_dir, config)
 
 def extract_th03_archive(gamedata_dir):
     config = CONFIGS.get("th03")
     run_extract(gamedata_dir, config)
 
-def apply_and_clean_th03_archive(gamedata_dir, mod_dir):
+def create_th03_archive(gamedata_dir, mod_dir):
     config = CONFIGS.get("th03")
-    run_archive(gamedata_dir, mod_dir, config)
+    run_create(gamedata_dir, mod_dir, config)
 
 def extract_th04_archive(gamedata_dir):
     config = CONFIGS.get("th04")
     run_extract(gamedata_dir, config)
 
-def apply_and_clean_th04_archive(gamedata_dir, mod_dir):
+def create_th04_archive(gamedata_dir, mod_dir):
     config = CONFIGS.get("th04")
-    run_archive(gamedata_dir, mod_dir, config)
+    run_create(gamedata_dir, mod_dir, config)
 
 def extract_th05_archive(gamedata_dir):
     config = CONFIGS.get("th05")
     run_extract(gamedata_dir, config)
 
-def apply_and_clean_th05_archive(gamedata_dir, mod_dir):
+def create_th05_archive(gamedata_dir, mod_dir):
     config = CONFIGS.get("th05")
-    run_archive(gamedata_dir, mod_dir, config)
+    run_create(gamedata_dir, mod_dir, config)
 
 # Example usage:
-# root = r"C:\TouhouProjectTranslation\PC98Project\[BUILDING]"
-# extract_th01_archive(root, r"lib\thdat.exe", "th01_gamedata")
+# create_th01_archive("C:/TouhouProjectTranslation/PC98Project/ReC98-PTBR/translation/exported_files/th01_gamedata", "C:/TouhouProjectTranslation/PC98Project/ReC98-PTBR/translation/mod/th01")

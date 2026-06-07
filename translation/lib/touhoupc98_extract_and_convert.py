@@ -97,7 +97,7 @@ def convert_and_prepare_th01(file_name):
         return 1
     
     # Build and convert modded .dat file
-    thdat.apply_and_clean_th01_archive(gamedata_dir,mod_root_dir)
+    thdat.create_th01_archive(gamedata_dir,mod_root_dir)
     
     # Create output modded folder
     os.makedirs(modded_dir, exist_ok=True)
@@ -199,9 +199,10 @@ def set_and_play_running_game(file_name):
                 shutil.copy2(src_path, dst_path)
 
     try:
+        print(f"Launching {game_folder_name} with DOSBox-X...")
         subprocess.run(dosbox_exe, cwd=dosbox_dir, shell=True)
     except Exception as e:
-        print(f"Failed to launch dosbox-x: {e}")
+        print(f"Failed to launch DOSBox-X: {e}")
 
 # ================================================================
 # EXTRACTION AND CONVERSION - PUBLIC FUNCTIONS
