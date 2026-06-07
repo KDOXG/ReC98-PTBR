@@ -123,9 +123,9 @@ Todas as licenças de ferramentas publicadas por terceiros sem associação com 
 
 Todos os scripts Python introduzidos são de autoria de KDOXG, publicados neste repositório sob a licença MIT.
 
-### FREECG98.BMP
+### FONT.BMP
 
-O arquivo de imagem `FONT.BMP` foi originalmente distribuído por DOSBox-X com o nome `FREECG98.BMP` e editado por KDOXG para fins deste projeto.
+O arquivo de imagem `FONT.BMP` foi originalmente distribuído pelo grupo P.O.B.R.E com o nome `FONT_EVO.BMP` para propósito da tradução do jogo de PC-98 [46 Okunen Monogatari: The Shinkaron (E.V.O.)][evo_pobre], finalmente editado por KDOXG para fins deste projeto.
 
 ### bmp2pi
 
@@ -402,6 +402,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 [touhouwiki_pt]: https://pt.touhouwiki.net/wiki/Touhou_Wiki
 [tpc_portal_pt-br]: https://www.thpatch.net/wiki/Portal:Pt-br
 [`anniversary`]: https://github.com/KDOXG/ReC98-PT-BR/tree/anniversary
+[evo_pobre]: https://www.romhacking.net.br/index.php?topic=10.0
 [euee_website]: https://euee.web.fc2.com/tool/nd.html
 [masaru_website]: https://cetus.sakura.ne.jp/softlab/srcpatch/index.html
 [thtk]: https://github.com/thpatch/thtk
