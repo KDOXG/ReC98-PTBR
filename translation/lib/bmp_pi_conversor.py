@@ -3,7 +3,7 @@ import subprocess
 import sys
 
 class PiConversionLib:
-    """Library wrapper for BMP/PI conversion using external executables."""
+    """Library wrapper for BMP/PI conversion using bmp2pi lib by MIYASAKA Masaru."""
     
     def __init__(self, bmp2pi_exe=None, pi2bmp_exe=None):
         base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -17,7 +17,7 @@ class PiConversionLib:
     
     def bmp_to_pi(self, bmp_file, pi_file):
         """
-        Convert BMP file to PI format using subprocess isolation.
+        Convert BMP file to PI format.
         
         Command line:
             bmp2pi.exe -o <pi_file> <bmp_file>
@@ -43,7 +43,7 @@ class PiConversionLib:
     
     def pi_to_bmp(self, pi_file, bmp_file):
         """
-        Convert PI file to BMP format using subprocess isolation.
+        Convert PI file to BMP format.
         
         Command line:
             pi2bmp.exe -o <bmp_file> <pi_file>

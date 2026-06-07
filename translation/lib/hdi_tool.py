@@ -6,28 +6,6 @@ ndc = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'NDC.EXE')
 # NDC Partition number for floppy/HDI images
 PARTITION_NUMBER = "0"
 
-def run_ndc_command(command):
-    """Execute an ndc command and handle errors."""
-    try:
-        full_command = f'cmd /c chcp 932 >nul && {command}'
-        result = subprocess.run(
-            full_command,
-            capture_output=True,
-            text=True,
-            shell=True,
-            encoding='cp932',
-            errors='replace'
-        )
-        if result.returncode != 0:
-            print(f"NDC Error: {result.stderr}")
-            return False
-        if result.stdout:
-            print(result.stdout)
-        return True
-    except Exception as e:
-        print(f"Error running NDC command: {e}")
-        return False
-
 def recover_shift_jis_name(broken_name):
     """Attempt to recover a Shift-JIS filename from Mojibake bytes."""
     try:
@@ -52,6 +30,28 @@ def rename_mojibake_names(output_dir):
                     os.rename(old_path, new_path)
                     print(f"Renamed mangled filename: {name} -> {recovered}")
 
+def run_ndc_command(command):
+    """Execute an ndc command and handle errors."""
+    try:
+        full_command = f'cmd /c chcp 932 >nul && {command}'
+        result = subprocess.run(
+            full_command,
+            capture_output=True,
+            text=True,
+            shell=True,
+            encoding='cp932',
+            errors='replace'
+        )
+        if result.returncode != 0:
+            print(f"NDC Error: {result.stderr}")
+            return False
+        if result.stdout:
+            print(result.stdout)
+        return True
+    except Exception as e:
+        print(f"Error running NDC command: {e}")
+        return False
+
 def extract_all_files_from_hdi(hdi_path, output_dir):
     """Extract all files from HDI image using ndc."""
     if not os.path.exists(hdi_path):
@@ -65,5 +65,5 @@ def extract_all_files_from_hdi(hdi_path, output_dir):
     success = run_ndc_command(command)
     if success:
         rename_mojibake_names(output_dir)
-        print(f"Success: All files extracted from {os.path.basename(hdi_path)} to {output_dir}")
+        print(f"Success: All files extracted from {os.path.basename(hdi_path)} to {os.path.basename(output_dir)}")
     return success
