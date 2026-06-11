@@ -5,6 +5,7 @@ from . import hdi_tool
 from . import pi_image_hex
 from . import bmp_pi_conversor
 from . import thdat
+from . import th01_extraction_suite
 
 lib_dir = os.path.dirname(os.path.abspath(__file__))
 translation_dir = os.path.dirname(lib_dir)
@@ -102,7 +103,7 @@ def convert_and_prepare_th01(file_name):
     # Create output modded folder
     os.makedirs(modded_dir, exist_ok=True)
     
-    # Copy all original files to modded folder
+    # Copy all original files to modded folder as base
     for item in os.listdir(gamedata_dir):
         src = os.path.join(gamedata_dir, item)
         dst = os.path.join(modded_dir, item)
