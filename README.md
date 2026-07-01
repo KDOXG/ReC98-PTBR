@@ -2,6 +2,8 @@
 
 ## Sobre o projeto
 
+Este é um projeto de tradução em **Português do Brasil** dos cinco primeiros jogos da série Touhou Project, lançados para o NEC PC-98. Toda a tradução, revisão, implementação e organização foi realizada pelo grupo **Crônicas de Gensokyo** via Discord.
+
 ATUALIZAÇÃO [01/07/2026]: Atualmente, estou desligado do grupo Crônicas de Gensokyo. Não há planos de continuar este projeto pela minha parte, o que significa que este repositório não será atualizado até segunda ordem. Acompanhem futuras novidades a partir dos links a seguir.
 
 ### Links
