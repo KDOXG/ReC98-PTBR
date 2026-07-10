@@ -6,6 +6,8 @@ Este é um projeto de tradução em **Português do Brasil** dos cinco primeiros
 
 ATUALIZAÇÃO [01/07/2026]: Atualmente, estou desligado do grupo Crônicas de Gensokyo. Não há planos de continuar este projeto pela minha parte, o que significa que este repositório não será atualizado até segunda ordem. Acompanhem futuras novidades a partir dos links a seguir.
 
+ATUALIZAÇÃO [10/07/2026]: [Com o anúncio do nmlgc cancelando o projeto ReC98](https://fixupx.com/ReC98Project/status/2075343280154214711) e o fato das chances do [projeto de compatibilidade de caracteres não-ASCII](https://rec98.nmlgc.net/blog/2023-07-28) ser continuado serem bem baixas, existe uma grande possibilidade de eu querer retomar o projeto deste repositório em breve. Como não faço mais parte do grupo Crônicas de Gensokyo, não tenho mais interesse direto no trabalho da tradução em si; só voltarei a ter interesse nessa parte quando o Touhou Patch Center decidir trazer suporte para a tradução desses jogos, o que não acontecerá em breve visto o andamento e as vontades da comunidade de lá. Em vez disso, estou planejando repropositar este projeto para seu objetivo principal se tornar __a aplicação de mods para Touhou PC-98__ — considerando que o patch de tradução é um mod, isso significa que meu sistema desenvolvido aqui poderá ser utilizado nesses projetos também. Quando eu decidir retomar o trabalho, irei atualizar este repositório inteiro (provavelmente irei rescrever o conteúdo dele para o inglês também). Acompanhem novidades por aqui e pelo [server do Discord do Touhou Patch Center](https://discord.thpatch.net/).
+
 ### Links
 
 - [Crônicas de Gensokyo][cronicas_discord]: Link de convite do servidor do grupo no Discord.
